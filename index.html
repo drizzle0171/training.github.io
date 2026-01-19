@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReGuide</title>
+
+  <!-- Meta tags for social sharing (optional) -->
+  <meta name="description" content="DESCRIPTION META TAG" />
+  <meta property="og:title" content="ReGuide | ICLR 2025" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:title" content="ReGuide | ICLR 2025" />
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG" />
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE" />
+
+  <!-- Favicon and Fonts -->
+  <link rel="icon" type="image/svg+xml" href="static/images/icon.svg" />
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="static/css/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- Style -->
+   <style>
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+    }
+
+    .swiper-slide img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .swiper {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Reflexive Guidance: Improving OoDD in Vision-Language Models via Self-Guided Image-Adaptive Concept Generation</h1>
+            <h2 class="title is-3">ICLR 2025</h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/jihyo-kim-0b5289194/">Jihyo Kim</a><sup>*</sup>,
+                <a href="https://www.linkedin.com/in/seulbi-lee-924004342/">Seulbi Lee</a><sup>*</sup>,
+                <a href="https://www.linkedin.com/in/sangheum-hwang-99a957a3/">Sangheum Hwang</a>
+              </span>
+              <p style="font-size: 13px;">(<sup>*</sup> Equal contribution)</p>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Seoul National University of Science and Technology</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://openreview.net/forum?id=R4h5PXzUuU" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/daintlab/ReGuide" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Github</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/daintlab/reguide" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img src="static/images/huggingface.png" alt="Hugging Face Logo" style="height: 1em; vertical-align: middle;">
+                    </span>
+                    <span>Huggingface</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p><strong>ReGuide</strong> is a self-guided prompting approach designed to improve 
+              out-of-distribution detection (OoDD) in Large Vision-Language Models (LVLMs).
+            </p>
+            <br>
+            <strong>Motivation</strong>
+            <ul>
+              <li>Foundation models (e.g., GPT-4o) are widely used due to their strong generalization abilities.</li>
+              <li>However, their trustworthiness, particularly in OoDD scenarios, is still underexplored.</li>
+              <li>This raises concerns about their safe and reliable deployment in real-world applications.</li>
+            </ul>
+
+            <strong>What We Do</strong>
+            <ul>
+              <li>Evaluate the OoDD capabilities of both proprietary and open-source LVLMs.</li>
+              <li>Analyze how these models express confidence through their generated natural language responses.</li>
+              <li>Propose ReGuide, which:
+                <ul>
+                  <li>Generates image-adaptive concept suggestions</li>
+                  <li>Improves confidence estimation and robustness in OoDD settings</li>
+                </ul>
+              </li>
+            </ul>
+
+            <strong>Results</strong>
+            <ul>
+              <li>Improves image classification performance</li>
+              <li>Enhances OoDD detection accuracy</li>
+              <li>Works as a simple yet effective enhancement for current LVLMs</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-vcentered">
+        <div class="column has-text-centered">
+          <figure class="image">
+            <img src="static/images/fig1-radar-all.png" alt="Radar All" style="width: 80%; height: auto;">
+            <figcaption>
+              <p><small>(a) Comparison of LVLMs </small></p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column has-text-centered">
+          <figure class="image">
+            <img src="static/images/fig1-radar-reguide.png" alt="Radar ReGuide" style="width: 90%; height: auto;">
+            <figcaption>
+              <p><small>(b) Effectiveness of ReGuide </small></p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">OoDD in LVLMs</h2>
+      <!-- framework -->
+      <h4 class="title is-4">Problem Definition</h4>
+      <div style="width:70%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure style="display: inline-block;">
+          <img src="static/images/oodd-in-lvlm.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        </figure>
+      </div>
+      <div class="content">
+          <p>
+            To extend conventional OoD detection (OoDD) to Large Vision-Language Models (LVLMs), this study adapts the zero-shot CLIP-based framework by:
+          </p>
+              <ul>
+                <li>Using a fixed set of in-distribution (ID) class names and a special rejection class ("none of these classes").</li>
+                <li>Extracting confidence scores from natural language outputs of LVLMs.</li>
+                <li>Defining the OoD score as the maximum confidence among ID classes applying softmax function for normalization.</li>
+              </ul>
+      </div>
+      <h4 class="title is-4">Prompt Design</h4>
+      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure style="display: inline-block;">
+          <img src="static/images/prompt.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        </figure>
+      </div>
+      <div class="content">
+          <p>
+            The prompt design used in LVLM-based OoDD evaluation consists of four main components:
+          </p>
+          <ul>
+            <li>
+              <strong>Task Description</strong> clearly states the objectives.
+            </li>
+            <li>
+              <strong>Rejection Class</strong> adds a special label "none of these classes" to allow the model to reject OoD inputs explicitly.
+            </li>
+            <li>
+              <strong>Guidelines</strong> address the most common failure cases.
+            </li>
+            <li>
+              <strong>Response Examples</strong> uses in-context learning (ICL) to present examples of valid responses.
+            </li>
+          </ul>
+      </div>
+      <!-- result -->
+      <h4 class="title is-4">Experimental Results</h4>
+      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure style="display: inline-block;">
+          <img src="static/images/result-oodd-in-lvlms.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        </figure>
+      </div>
+      <div class="content">
+        <ul>
+          <li>Proprietary LVLMs generally outperform open-source and single-modal models in both ID and OoD tasks.</li>
+          <li>LVLMs perform better on far-OoD than near-OoD.</li>
+          <li>InternVL2-76B achieves the best balance across ID accuracy, OoD performance, and valid response rate.</li>
+          <li>Some open-source models show 100% FPR due to biased confidence distribution, e.g., GLM-4v performs best in OoD but poorly in ID classification.</li>
+        </ul> 
+      </div>
+    </div>
+  </section>
+  
+  <section class="section result">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Further Analysis</h2> 
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+              <img src="static/images/result-further.png" alt="Run 1">
+            </div>
+            <div class="content" style="text-align: left;">
+              <ul>
+                <li><strong>(a) FPR across different TPR thresholds</strong>: LLaVA-v1.6 consistently yields 100% FPR overall TPR, indicating extreme overconfidence across thresholds.</li>
+                <li><strong>(b) OoD score distribution</strong>: InternVL2-76B shows a balanced distribution of OoD scores, while GPT-4o has more extreme values (0 or 100), suggesting overconfidence.</li>
+                <li><strong>(c) OoD detectability based on model sizes</strong>: Larger models like InternVL2-76B outperform smaller ones in OoD detection, highlighting the benefit of scale.</li>              
+                <li><strong>(d) ID classification accuracy and OoDD performance of InternVL2-26B according to the given class order</strong>: Word order and class position in prompts significantly affect InternVL2-26B’s behavior.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+              <img src="static/images/result-reasoning.png" alt="Run 2">
+            </div>
+            <div class="content" style="text-align: left;">
+              <p><strong>Reasoning</strong></p>
+              <ul>
+                <li>High interpretability of visual inputs improves OoD prediction.</li>
+                <li>InternVL2-26B handles fine-grained object differentiation well, but GPT-4o shows more detailed rationales.</li>
+              </ul>
+            </div> 
+          </div>
+          <div class="swiper-slide">
+            <div style="width:50%; margin: 0 auto 1rem auto; text-align: center;">
+              <figure style="display: inline-block;">
+                <img src="static/images/result-confidence-id.png" style="max-width:100%;" alt="Run 3">
+              </figure>
+            </div>
+            <div class="content" style="text-align: left;">
+              <p><strong>Confidence scores on ID</strong></p>
+              <ul>
+                <li>
+                  GPT-4o offers the best balance of accuracy and reliable confidence.
+                </li>
+                <li>
+                  OpenCLIP and GPT-4o show the best calibration, with low ECE and AURC.
+                </li>
+                <li>
+                  InternVL2-76B achieves high accuracy but poor calibration, assigning high confidence even to incorrect predictions.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="columns is-vcentered" style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+              <figure style="display: inline-block;">
+                <img src="static/images/result-failure-case.png" style="max-width:90%;" alt="Run 3">
+                <figcaption>
+                  <p><small>(a) The number of each failure case </small></p>
+                </figcaption>
+              </figure>
+              <figure style="display: inline-block;">
+                <img src="static/images/result-inappropriate-case.png" style="max-width:100%;" alt="Run 3">
+                <figcaption>
+                  <p><small>(b) Examples of inappropriate images and responses </small></p>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="content" style="text-align: left;">
+              <p><strong>Response failure</strong></p>
+              <ul>
+                <li>
+                  The failure cases are as follows:
+                  <ul>
+                    <li>
+                      (1) A mismatch between the predicted class and the class with the maximum confidence score
+                    </li>
+                    <li>
+                      (2) Failure to provide confidence scores for all classes
+                    </li>
+                    <li>
+                      (3) Responses that are not structured as the given format
+                    </li>
+                    <li>
+                      (4) Responses indicating an inability to identify the given image
+                    </li>
+                    <li>
+                      (5) Inclusion of classes not listed among the given
+                    </li>
+                    <li>
+                      (6) Class duplication
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Proprietary models exhibit more failure cases mainly due to their conservative approach, as they often refuse to respond to uncertain or sensitive inputs, resulting in lower valid response rates.
+                </li>
+                <li>
+                  Failure cases are not confined to any specific dataset, suggesting they arise from both the nature of the data and the underlying mechanisms of the models.
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+        <!-- Navigation arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+  
+        <!-- Pagination dots (optional) -->
+        <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Reflexive Guidance</h2>
+      <h4 class="title is-4">Framework</h4>
+      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure class="image is-inline-block">
+          <img src="static/images/reguide.png" alt="ReGuide Diagram">
+        </figure>
+      </div>
+      <div class="content">
+        <p>
+          Reflexive Guidance (ReGuide) is a simple and model-agnostic two-stage prompting strategy to enhance the OoD detectability of LVLMs. We leverage the LVLM itself to obtain guidance for OoDD from its powerful zero-shot visual recognition capabilities.
+        </p>
+        <br>
+        <p>
+          <strong>Stage 1:</strong> The LVLM suggests <i>2N</i> class names based on the input image.
+        </p>
+        <ul>
+          <li>The first <i>N</i> classes are visually similar (near-OoD).</li>
+          <li>The second <i>N</i> classes are visually dissimilar or from different domains (far-OoD).</li>
+          <li>For OoD images, suggested classes often closely match the ground-truth label.</li>
+        </ul>
+        <br>
+        <p>
+          <strong>Stage 2:</strong> The suggested classes are used as auxiliary OoD classes.
+        </p>
+        <ul>
+          <li>OoD inputs may receive higher confidence for these classes than for ID classes.</li>
+          <li>The rejection class remains as a fallback option.</li>
+        </ul>
+      </div>
+      <!-- result -->
+      <h4 class="title is-4">Experimental Results</h4>
+      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure style="display: inline-block;">
+          <img src="static/images/result-reguide.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        </figure>
+      </div>
+      <div class="content">
+        <strong>General Performance</strong>
+          <ul>
+            <li>ReGuide improves both ID classification and OoDD performance, especially when using visually similar classes (i.e., near-OoD).</li>
+            <li>Suggesting similar classes helps models better distinguish fine-grained differences between ID inputs.</li>
+            <li>InternVL2-76B and GPT-4o show gains in AUROC, FPR@95%TPR, and valid response rate when guided by ReGuide.</li>
+            <li>GPT-4o benefits more from ReGuide in near-OoD detection, even though it sometimes struggles with ambiguous inputs.</li>
+          </ul>
+          
+          <strong>Insights</strong>
+          <ul>
+            <li>ReGuide's effectiveness stems from using the image itself to generate auxiliary classes rather than relying on external text.</li>
+            <li>This model-agnostic strategy provides relevant and adaptive guidance to LVLMs based on each specific input.</li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">BibTeX</h2>
+      <div style="background: #f5f5f5; padding: 1em; border-radius: 6px; font-family: monospace;">
+        @inproceedings{<br>
+        &nbsp;&nbsp;kim2025reflexive,<br>
+        &nbsp;&nbsp;title={Reflexive Guidance: Improving Oo{DD} in Vision-Language Models via Self-Guided Image-Adaptive Concept Generation},<br>
+        &nbsp;&nbsp;author={Jihyo Kim and Seulbi Lee and Sangheum Hwang},<br>
+        &nbsp;&nbsp;booktitle={The Thirteenth International Conference on Learning Representations},<br>
+        &nbsp;&nbsp;year={2025},<br>
+        &nbsp;&nbsp;url={https://openreview.net/forum?id=R4h5PXzUuU}<br>
+        }
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
+                Academic Project Page Template
+              </a>
+              which was adopted from the
+              <a href="https://nerfies.github.io" target="_blank">Nerfies</a>
+              project page. You are free to borrow the design of this website, we just ask that you link back to this page in the footer.
+              <br />
+              This website is licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                Creative Commons Attribution-ShareAlike 4.0 International License
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    autoHeight: true, // ✅ Add this line
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    }
+  });
+  </script>
+  
+</body>
+</html>
