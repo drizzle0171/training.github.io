@@ -123,7 +123,7 @@
               <div class="columns is-vcentered">
                 <div class="column has-text-centered">
                   <figure class="image">
-                    <img src="static/images/irrel-sample.png" alt="Radar All" style="width: 100%; height: auto;">
+                    <img src="static/images/irrel-sample.png" alt="Radar All" style="width: 120%; height: auto;">
                     <figcaption>
                       <p><small>(a) A sample that can be answered from common sense </small></p>
                     </figcaption>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="column has-text-centered">
                   <figure class="image">
-                    <img src="static/images/rel-sample.png" alt="Radar ReGuide" style="width: 100%; height: auto;">
+                    <img src="static/images/rel-sample.png" alt="Radar ReGuide" style="width: 120%; height: auto;">
                     <figcaption>
                       <p><small>(b) A sample that requires fine-grained visual understanding </small></p>
                     </figcaption>
@@ -184,7 +184,7 @@
       <!-- framework -->
       <h4 class="title is-4">Definition</h4>
       <div style="width:70%; margin: 0 auto 1rem auto; text-align: center;">
-        <p>
+        
         $$
         \mathrm{VIG}
         =
@@ -203,9 +203,9 @@
         - \log q_{\theta}(a_t \mid a_{<t}, Q, z_v)
         \Big]
         $$
-        </p>
+        
       </div>
-      <div class="content" style="text-align: left;"></div>
+      <div class="content" style="text-align: left;">
         <ul>
           <li>We introduce VIG, which quantifies how much the inclusion of image $I$ reduces the model's uncertainty.</li>
           <li>We define VIG as the log-ratio beween the model's perplexities (PPL) on the same answer $A$ with and without visual conditioning.</li>
@@ -284,21 +284,6 @@
     
           <!-- Pagination dots (optional) -->
           <div class="swiper-pagination"></div>
-      </div>
-
-      <h4 class="title is-4">Experimental Results</h4>
-      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-        <figure style="display: inline-block;">
-          <img src="static/images/result-oodd-in-lvlms.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
-        </figure>
-      </div>
-      <div class="content">
-        <ul>
-          <li>Proprietary LVLMs generally outperform open-source and single-modal models in both ID and OoD tasks.</li>
-          <li>LVLMs perform better on far-OoD than near-OoD.</li>
-          <li>InternVL2-76B achieves the best balance across ID accuracy, OoD performance, and valid response rate.</li>
-          <li>Some open-source models show 100% FPR due to biased confidence distribution, e.g., GLM-4v performs best in OoD but poorly in ID classification.</li>
-        </ul> 
       </div>
     </div>
   </section>
