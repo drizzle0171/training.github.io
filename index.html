@@ -63,7 +63,7 @@
             <h2 class="title is-3">arXiv</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://www.linkedin.com/in/seulbi-lee-924004342/">Seulbi Lee</a><sup>*</sup>,
+                <a href="https://www.linkedin.com/in/seulbi-lee-924004342/">Seulbi Lee</a>,
                 <a href="https://www.linkedin.com/in/sangheum-hwang-99a957a3/">Sangheum Hwang</a>
               </span>
             </div>
@@ -111,29 +111,29 @@
             <br>
             <strong>Motivation</strong>
             <ul>
-              <li><strong>Language Bias in LVLMs</strong>: While Large Vision-Language Models (LVLMs) have demonstrated impressive capabilities, they suffer from significant <em>language bias</em>, often ignoring visual evidence in favor of learned linguistic priors and shortcuts.
-              <li><strong>The Data Heterogeneity Gap</strong>: Current instruction-tuning datasets contain a heterogeneous mixture of examples; some require deep visual reasoning, while others can be solved via text alone. However, prior works often overlook this, treating all samples and tokens with equal importance.</li>
-              <li><strong>The Consequence of Uniform Training</strong>: When models are trained without distinguishing visually dependent signals from text-only patterns, they lack the incentive to acquire robust visual grounding. This leads to inefficient learning and a default reliance on easily exploitable linguistic correlations.</li>
+              <li><strong>Language Bias in LVLMs</strong>: Large Vision-Language Models often ignore visual evidence, relying instead on learned linguistic priors.
+              <li><strong>Data Heterogeneity Gap</strong>: Instruction datasets are a mixture of examples, ranging from those solvable by linguistic context alone to those demanding genuine visual understanding.</li>
+              <li><strong>Uniform Training</strong>: Uniform training on this heterogeneous data encourages models to exploit shortcuts rather than learning robust visual grounding.</li>
             </ul>
 
             <strong>Research Qeustion</strong>
             <ul>
-              <li><strong>Quantification</strong>: <em>Can we directly measure how much each training sample and token benefits from the visual input?</em></li>
-              <li><strong>Optimization</strong>: <em>Can we use this signal to focus learning on genuinely visual evidance?</em></li>
+              <li><strong>Quantification</strong>: <em>Can we directly <strong>measure</strong> how much each training sample and token <strong>benefits from the visual input?</strong></em></li>
+              <li><strong>Optimization</strong>: <em>Can we use this signal to <strong>focus</strong> learning on genuinely visual evidance?</em></li>
             </ul>
 
             <strong>Method</strong>
             <ul>
-              <li><strong>Visual Information Gain (VIG)</strong>: We introduce VIG, a novel metric that quantifies the information contribution of the visual modality at both the sample and token levels.</li>
-              <li><strong>VIG as a Grounding Indicator</strong>: We demonstrate that VIG reliably serves as an indicator of visual grounding at sample, benchmark, token level.
-              <li><strong>VIG-Guided Selective Training</strong>: We propose a VIG-guided selective training scheme that prioritizes high VIG-samples and tokens.</li>
+              <li><strong>Visual Information Gain (VIG)</strong>: We introduce a perplexity-based metric that quantifies the contribution of visual input.</li>
+              <li><strong>VIG as a Grounding Indicator</strong>: We analyse that VIG reliably serves as an indicator of visual grounding across sample, benchmark, token level.
+              <li><strong>VIG-Guided Selective Training</strong>: We propose a strategy that prioritizes high VIG-samples and tokens.</li>
             </ul>
 
             <strong>Results</strong>
             <ul>
-              <li><strong>Enhanced Data Efficiency</strong>: Our method significantly reduces training costs by identifying and pruning weakly grounded samples, achieving superior performance with less data.</li>
-              <li><strong>Improved Visual Grounding</strong>: By focusing on visually informative tokens, the model achieves state-of-the-art results on benchmarks requiring detailed visual perception.</li>
-              <li><strong>Mitigated Language Bias</strong>: The VIG-guided approach successfully breaks linguistic shortcuts, resulting in reduced hallucination and more faithful image-text alignment.</li>
+              <li><strong>Enhanced Data Efficiency</strong>: We achieve superior performance using only a fraction of the data by pruning weakly grounded samples.</li>
+              <li><strong>Improved Visual Grounding</strong>: Our method significantly improves performance on various benchmarks by focusing optimization on visual tokens.</li>
+              <li><strong>Mitigated Language Bias</strong>: The VIG-guided approach successfully reduces linguistic bias.</li>
             </ul>
             </div>
           </div>
