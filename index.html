@@ -184,12 +184,27 @@
       <!-- framework -->
       <h4 class="title is-4">Definition</h4>
       <div style="width:70%; margin: 0 auto 1rem auto; text-align: center;">
-        
-        $$\mathrm{VIG}=\log \left(\frac{\mathrm{PPL}(A \mid Q)}{\mathrm{PPL}(A \mid Q, I)}\right)= 
-        \frac{1}{T}\sum_{t=1}^{T}
-        \Big[- \log q_{\theta}(a_t \mid a_{<t},Q)\Big]-\Big[-\log{q_{\theta}}(a_t\mid{a_{<t}},Q,z_v)\Big]$$
-        
-      </div>
+        {% raw %}
+          $$
+          \mathrm{VIG}
+          =
+          \log \left(
+          \frac{\mathrm{PPL}(A \mid Q)}
+              {\mathrm{PPL}(A \mid Q, I)}
+          \right)
+          =
+          \frac{1}{T}
+          \sum_{t=1}^{T}
+          \Big[
+          - \log q_{\theta}(a_t \mid a_{<t}, Q)
+          \Big]
+          -
+          \Big[
+          - \log q_{\theta}(a_t \mid a_{<t}, Q, z_v)
+          \Big]
+          $$
+        {% endraw %}
+        </div>
       <div class="content" style="text-align: left;">
         <ul>
           <li>We introduce VIG, which quantifies how much the inclusion of image $I$ reduces the model's uncertainty.</li>
