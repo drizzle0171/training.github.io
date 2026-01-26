@@ -19,6 +19,17 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE" />
 
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
   <!-- Favicon and Fonts -->
   <link rel="icon" type="image/svg+xml" href="static/images/icon.svg" />
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
@@ -169,50 +180,109 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">OoDD in LVLMs</h2>
+      <h2 class="title is-3">Visual Information Gain</h2>
       <!-- framework -->
-      <h4 class="title is-4">Problem Definition</h4>
+      <h4 class="title is-4">Definition</h4>
       <div style="width:70%; margin: 0 auto 1rem auto; text-align: center;">
-        <figure style="display: inline-block;">
-          <img src="static/images/oodd-in-lvlm.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
-        </figure>
+        $$
+        \mathrm{VIG}
+        =
+        \log \left(
+        \frac{\mathrm{PPL}(A \mid Q)}
+             {\mathrm{PPL}(A \mid Q, I)}
+        \right)
+        = 
+        \frac{1}{T}
+        \sum_{t=1}^{T}
+        \Big[
+        - \log q_{\theta}(a_t \mid a_{<t}, Q)
+        \Big]
+        -
+        \Big[
+        - \log q_{\theta}(a_t \mid a_{<t}, Q, z_v)
+        \Big]
+        $$
+
+        <ul>
+          <li>We introduce VIG, which quantifies how much the inclusion of image $$I$$ reduces the model's uncertainty.</li>
+          <li>We define VIG as the log-ratio beween the model's perplexities (PPL) on the same answer $$A$$ with and without visual conditioning.</li>
+          <li>Based on the relationship $$PPL = \exp(\mathcal{L})$$, where $$\mathcal{L}$$ is the cross-entropy loss, VIG inherently reflects the aggregate contribution of per-token loss reductions.</li>
+        </ul>
       </div>
-      <div class="content">
-          <p>
-            To extend conventional OoD detection (OoDD) to Large Vision-Language Models (LVLMs), this study adapts the zero-shot CLIP-based framework by:
-          </p>
-              <ul>
-                <li>Using a fixed set of in-distribution (ID) class names and a special rejection class ("none of these classes").</li>
-                <li>Extracting confidence scores from natural language outputs of LVLMs.</li>
-                <li>Defining the OoD score as the maximum confidence among ID classes applying softmax function for normalization.</li>
-              </ul>
+      <h4 class="title is-4">Analyses</h4>
+      <div class="container is-max-desktop">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+                <img src="static/images/sample-level.png" alt="Run 1">
+              </div>
+              <div class="content" style="text-align: left;">
+                <p><strong>Sample-level</strong>: VIG is a fine-grained measure of visual grounding. </p>
+                <ul>
+                  <li>Image 1: high positive VIG - full alignment between image and text.</li>
+                  <li>Image 2: moderately positive VIG - correct main subject, but attribute mismatches.</li>
+                  <li>Image 3: negative VIG - visual content increases uncertainty and conflicts with the text.</li>              
+                </ul>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+                <img src="static/images/benchmark-level.png" alt="Run 2">
+              </div>
+              <div class="content" style="text-align: left;">
+                <p><strong>Benchmark-level</strong>: VIG aligns with benchmark-level modality dependency.</p>
+                <ul>
+                  <li>COCO exhibits a distribution clearly shifted towards positive values.</li>
+                  <li>POPE presents a distribution centered near zero but still slightly biased toward the positive side.</li>
+                  <li>GQA and SQA show distributions with negative mean scores.</li>
+                </ul>
+              </div> 
+            </div>
+            <div class="swiper-slide">
+              <section class="section">
+                <div class="container is-max-desktop">
+                  <div class="columns is-vcentered">
+                    <div class="column has-text-centered">
+                      <figure class="image">
+                        <img src="static/images/token-level-scatter.png" alt="Radar All" style="width: 90%; height: auto;">
+                        <figcaption>
+                          <p><small>(a) Visualizing the token-level VIGs </small></p>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="column has-text-centered">
+                      <figure class="image">
+                        <img src="static/images/token-level-table.png" alt="Radar ReGuide" style="width: 60%; height: auto;">
+                        <figcaption>
+                          <p><small>(b) Tokens and their loss differences in LLaVA-1.5 </small></p>
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div class="content" style="text-align: left;">
+                <p><strong>Token-level</strong>: VIG captures token-level visual grounding.</p>
+                <ul>
+                  <li>
+                    The tokens in the red region represent prediction losses are substantially reduced by image. (strong visual grounding)
+                  </li>
+                  <li>
+                    The tokens in the blue region primarily serve as functional roles. (weak visual contribution)
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+          <!-- Navigation arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+    
+          <!-- Pagination dots (optional) -->
+          <div class="swiper-pagination"></div>
       </div>
-      <h4 class="title is-4">Prompt Design</h4>
-      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-        <figure style="display: inline-block;">
-          <img src="static/images/prompt.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
-        </figure>
-      </div>
-      <div class="content">
-          <p>
-            The prompt design used in LVLM-based OoDD evaluation consists of four main components:
-          </p>
-          <ul>
-            <li>
-              <strong>Task Description</strong> clearly states the objectives.
-            </li>
-            <li>
-              <strong>Rejection Class</strong> adds a special label "none of these classes" to allow the model to reject OoD inputs explicitly.
-            </li>
-            <li>
-              <strong>Guidelines</strong> address the most common failure cases.
-            </li>
-            <li>
-              <strong>Response Examples</strong> uses in-context learning (ICL) to present examples of valid responses.
-            </li>
-          </ul>
-      </div>
-      <!-- result -->
+
       <h4 class="title is-4">Experimental Results</h4>
       <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
         <figure style="display: inline-block;">
@@ -227,117 +297,6 @@
           <li>Some open-source models show 100% FPR due to biased confidence distribution, e.g., GLM-4v performs best in OoD but poorly in ID classification.</li>
         </ul> 
       </div>
-    </div>
-  </section>
-  
-  <section class="section result">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Further Analysis</h2> 
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-              <img src="static/images/result-further.png" alt="Run 1">
-            </div>
-            <div class="content" style="text-align: left;">
-              <ul>
-                <li><strong>(a) FPR across different TPR thresholds</strong>: LLaVA-v1.6 consistently yields 100% FPR overall TPR, indicating extreme overconfidence across thresholds.</li>
-                <li><strong>(b) OoD score distribution</strong>: InternVL2-76B shows a balanced distribution of OoD scores, while GPT-4o has more extreme values (0 or 100), suggesting overconfidence.</li>
-                <li><strong>(c) OoD detectability based on model sizes</strong>: Larger models like InternVL2-76B outperform smaller ones in OoD detection, highlighting the benefit of scale.</li>              
-                <li><strong>(d) ID classification accuracy and OoDD performance of InternVL2-26B according to the given class order</strong>: Word order and class position in prompts significantly affect InternVL2-26B’s behavior.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-              <img src="static/images/result-reasoning.png" alt="Run 2">
-            </div>
-            <div class="content" style="text-align: left;">
-              <p><strong>Reasoning</strong></p>
-              <ul>
-                <li>High interpretability of visual inputs improves OoD prediction.</li>
-                <li>InternVL2-26B handles fine-grained object differentiation well, but GPT-4o shows more detailed rationales.</li>
-              </ul>
-            </div> 
-          </div>
-          <div class="swiper-slide">
-            <div style="width:50%; margin: 0 auto 1rem auto; text-align: center;">
-              <figure style="display: inline-block;">
-                <img src="static/images/result-confidence-id.png" style="max-width:100%;" alt="Run 3">
-              </figure>
-            </div>
-            <div class="content" style="text-align: left;">
-              <p><strong>Confidence scores on ID</strong></p>
-              <ul>
-                <li>
-                  GPT-4o offers the best balance of accuracy and reliable confidence.
-                </li>
-                <li>
-                  OpenCLIP and GPT-4o show the best calibration, with low ECE and AURC.
-                </li>
-                <li>
-                  InternVL2-76B achieves high accuracy but poor calibration, assigning high confidence even to incorrect predictions.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="columns is-vcentered" style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-              <figure style="display: inline-block;">
-                <img src="static/images/result-failure-case.png" style="max-width:90%;" alt="Run 3">
-                <figcaption>
-                  <p><small>(a) The number of each failure case </small></p>
-                </figcaption>
-              </figure>
-              <figure style="display: inline-block;">
-                <img src="static/images/result-inappropriate-case.png" style="max-width:100%;" alt="Run 3">
-                <figcaption>
-                  <p><small>(b) Examples of inappropriate images and responses </small></p>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="content" style="text-align: left;">
-              <p><strong>Response failure</strong></p>
-              <ul>
-                <li>
-                  The failure cases are as follows:
-                  <ul>
-                    <li>
-                      (1) A mismatch between the predicted class and the class with the maximum confidence score
-                    </li>
-                    <li>
-                      (2) Failure to provide confidence scores for all classes
-                    </li>
-                    <li>
-                      (3) Responses that are not structured as the given format
-                    </li>
-                    <li>
-                      (4) Responses indicating an inability to identify the given image
-                    </li>
-                    <li>
-                      (5) Inclusion of classes not listed among the given
-                    </li>
-                    <li>
-                      (6) Class duplication
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Proprietary models exhibit more failure cases mainly due to their conservative approach, as they often refuse to respond to uncertain or sensitive inputs, resulting in lower valid response rates.
-                </li>
-                <li>
-                  Failure cases are not confined to any specific dataset, suggesting they arise from both the nature of the data and the underlying mechanisms of the models.
-                </li>
-              </ul>
-            </div>
-          </div>
-      </div>
-        <!-- Navigation arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-  
-        <!-- Pagination dots (optional) -->
-        <div class="swiper-pagination"></div>
     </div>
   </section>
 
