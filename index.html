@@ -184,6 +184,7 @@
       <!-- framework -->
       <h4 class="title is-4">Definition</h4>
       <div style="width:70%; margin: 0 auto 1rem auto; text-align: center;">
+        <p>
         $$
         \mathrm{VIG}
         =
@@ -202,11 +203,13 @@
         - \log q_{\theta}(a_t \mid a_{<t}, Q, z_v)
         \Big]
         $$
-
+        </p>
+      </div>
+      <div class="content" style="text-align: left;"></div>
         <ul>
-          <li>We introduce VIG, which quantifies how much the inclusion of image $$I$$ reduces the model's uncertainty.</li>
-          <li>We define VIG as the log-ratio beween the model's perplexities (PPL) on the same answer $$A$$ with and without visual conditioning.</li>
-          <li>Based on the relationship $$PPL = \exp(\mathcal{L})$$, where $$\mathcal{L}$$ is the cross-entropy loss, VIG inherently reflects the aggregate contribution of per-token loss reductions.</li>
+          <li>We introduce VIG, which quantifies how much the inclusion of image $I$ reduces the model's uncertainty.</li>
+          <li>We define VIG as the log-ratio beween the model's perplexities (PPL) on the same answer $A$ with and without visual conditioning.</li>
+          <li>Based on the relationship $PPL = \exp(\mathcal{L})$, where $\mathcal{L}$ is the cross-entropy loss, VIG inherently reflects the aggregate contribution of per-token loss reductions.</li>
         </ul>
       </div>
       <h4 class="title is-4">Analyses</h4>
@@ -215,7 +218,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-                <img src="static/images/sample-level.png" alt="Run 1">
+                <img src="static/images/sample-level.png" alt="Run 1" style="width: 70%; height: auto;">
               </div>
               <div class="content" style="text-align: left;">
                 <p><strong>Sample-level</strong>: VIG is a fine-grained measure of visual grounding. </p>
@@ -228,7 +231,7 @@
             </div>
             <div class="swiper-slide">
               <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-                <img src="static/images/benchmark-level.png" alt="Run 2">
+                <img src="static/images/benchmark-level.png" alt="Run 2" style="width: 70%; height: auto;">
               </div>
               <div class="content" style="text-align: left;">
                 <p><strong>Benchmark-level</strong>: VIG aligns with benchmark-level modality dependency.</p>
@@ -245,7 +248,7 @@
                   <div class="columns is-vcentered">
                     <div class="column has-text-centered">
                       <figure class="image">
-                        <img src="static/images/token-level-scatter.png" alt="Radar All" style="width: 90%; height: auto;">
+                        <img src="static/images/token-level-scatter.png" alt="Radar All" style="width: 80%; height: auto;">
                         <figcaption>
                           <p><small>(a) Visualizing the token-level VIGs </small></p>
                         </figcaption>
@@ -253,7 +256,7 @@
                     </div>
                     <div class="column has-text-centered">
                       <figure class="image">
-                        <img src="static/images/token-level-table.png" alt="Radar ReGuide" style="width: 60%; height: auto;">
+                        <img src="static/images/token-level-table.png" alt="Radar ReGuide" style="width: 90%; height: auto;">
                         <figcaption>
                           <p><small>(b) Tokens and their loss differences in LLaVA-1.5 </small></p>
                         </figcaption>
