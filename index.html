@@ -100,14 +100,39 @@
     </div>
   </section>
 
+  
   <section class="section abstract">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
+          
+          <section class="section">
+            <div class="container is-max-desktop">
+              <div class="columns is-vcentered">
+                <div class="column has-text-centered">
+                  <figure class="image">
+                    <img src="static/images/fig-irrel-sample.pdf" alt="Radar All" style="width: 80%; height: auto;">
+                    <figcaption>
+                      <p><small>(a) A sample that can be answered from common sense </small></p>
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="column has-text-centered">
+                  <figure class="image">
+                    <img src="static/images/fig-rel-sample.pdf" alt="Radar ReGuide" style="width: 90%; height: auto;">
+                    <figcaption>
+                      <p><small>(b) A sample that requires fine-grained visual understanding </small></p>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <div class="content has-text-justified">
-            <p><strong>Visual Information Gain</strong> is a perplexity-based metric that quantifies the contribution of visual input by measuring the reduction in model uncetainty.
-            </p>
+            <!-- <p><strong>Visual Information Gain</strong> is a perplexity-based metric that quantifies the contribution of visual input by measuring the reduction in model uncetainty.
+            </p> -->
             <br>
             <strong>Motivation</strong>
             <ul>
@@ -116,7 +141,7 @@
               <li><strong>Uniform Training</strong>: Uniform training on this heterogeneous data encourages models to exploit shortcuts rather than learning robust visual grounding.</li>
             </ul>
 
-            <strong>Research Qeustion</strong>
+            <strong>Research Question</strong>
             <ul>
               <li><strong>Quantification</strong>: <em>Can we directly <strong>measure</strong> how much each training sample and token <strong>benefits from the visual input?</strong></em></li>
               <li><strong>Optimization</strong>: <em>Can we use this signal to <strong>focus</strong> learning on genuinely visual evidance?</em></li>
@@ -141,28 +166,6 @@
       </div>
     </section>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-vcentered">
-        <div class="column has-text-centered">
-          <figure class="image">
-            <img src="static/images/fig1-radar-all.png" alt="Radar All" style="width: 80%; height: auto;">
-            <figcaption>
-              <p><small>(a) Comparison of LVLMs </small></p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="column has-text-centered">
-          <figure class="image">
-            <img src="static/images/fig1-radar-reguide.png" alt="Radar ReGuide" style="width: 90%; height: auto;">
-            <figcaption>
-              <p><small>(b) Effectiveness of ReGuide </small></p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="container is-max-desktop">
