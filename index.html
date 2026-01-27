@@ -298,40 +298,55 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">VIG-guided Selective Training</h2>
-      <h4 class="title is-4">Framework</h4>
       <div class="content">
         <p>
           VIG-guided selective training is the practical training strategy that trains the model by focusing only on the <em>"part that need to be seen"</em> of the <em>"data that needs to be seen"</em>
         </p>
-        <br>
         <ol>
           <li>All training samples are ranked by VIG and the top $p%$ are selected.</li>
           <li>Within this curated subset, token-level selection is further performed using same threshold $\tau_p$</li>
           <li>The model is optimized using only the selected tokens.</li>
         </ol>
       </div>
+
       <!-- result -->
-      <h4 class="title is-4">Experimental Results</h4>
+      <h4 class="title is-4">Overall Performance</h4>
       <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
         <figure style="display: inline-block;">
-          <img src="static/images/result-reguide.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+          <img src="static/images/overall-performance.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
         </figure>
       </div>
       <div class="content">
-        <strong>General Performance</strong>
-          <ul>
-            <li>ReGuide improves both ID classification and OoDD performance, especially when using visually similar classes (i.e., near-OoD).</li>
-            <li>Suggesting similar classes helps models better distinguish fine-grained differences between ID inputs.</li>
-            <li>InternVL2-76B and GPT-4o show gains in AUROC, FPR@95%TPR, and valid response rate when guided by ReGuide.</li>
-            <li>GPT-4o benefits more from ReGuide in near-OoD detection, even though it sometimes struggles with ambiguous inputs.</li>
-          </ul>
-          
-          <strong>Insights</strong>
-          <ul>
-            <li>ReGuide's effectiveness stems from using the image itself to generate auxiliary classes rather than relying on external text.</li>
-            <li>This model-agnostic strategy provides relevant and adaptive guidance to LVLMs based on each specific input.</li>
-          </ul>
+        <ul>
+          <li>VIG-guided selective training yields strong data efficiency.</li>
+          <li>By training on only 70% of the samples and further pruning supervision via token-level masking, all models exceed their vanilla counterparts.</li>
+          <li>VIG selection improves performance with particularly clear gains on vision-understanding benchmarks.</li>
+        </ul> 
       </div>
+    
+      <h4 class="title is-4">Comparison with Exsting Methods</h4>
+      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
+        <figure style="display: inline-block;">
+          <img src="static/images/comparison.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        </figure>
+      </div>
+      <div class="content">
+        <ul>
+          <li>Existing methods exhibit notable trade-offs.</li>
+          <li>VIG training exhibits strong othogonality to exsting approaches.</li>
+          <li>VIG serves as a fundamental, data-centric enhancement that complements diverse visual grounding strategies.</li>
+        </ul> 
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Demonstrations</h2>
+        <img src="static/images/example1.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+        <img src="static/images/example2.png" alt="OoDD in LVLMs" style="max-width: 100%; height: auto;">
+
     </div>
   </section>
 
