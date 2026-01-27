@@ -178,22 +178,37 @@
 
             <strong>Research Question</strong>
             <ul>
-              <li><strong>Quantification</strong>: <em>Can we directly <strong>measure</strong> how much each training sample and token <strong>benefits from the visual input?</strong></em></li>
-              <li><strong>Optimization</strong>: <em>Can we use this signal to <strong>focus</strong> learning on genuinely visual evidance?</em></li>
+              <li><em>Can we directly <strong>measure</strong> how much each training sample and token <strong>benefits from the visual input?</strong></em></li>
+              <li><em>Can we use this signal to <strong>focus</strong> learning on genuinely visual evidance?</em></li>
             </ul>
 
             <strong>Method</strong>
             <ul>
               <li><strong>Visual Information Gain (VIG)</strong>: We introduce a perplexity-based metric that quantifies the contribution of visual input.</li>
-              <li><strong>VIG as a Grounding Indicator</strong>: We analyse that VIG reliably serves as an indicator of visual grounding across sample, benchmark, token level.
+              <!-- <li><strong>VIG as a Grounding Indicator</strong>: We analyse that VIG reliably serves as an indicator of visual grounding across sample, benchmark, token level. -->
               <li><strong>VIG-Guided Selective Training</strong>: We propose a strategy that prioritizes high VIG-samples and tokens.</li>
             </ul>
 
             <strong>Results</strong>
-            <ul>
-              <li><strong>Enhanced Data Efficiency</strong>: We achieve superior performance using only a fraction of the data by pruning weakly grounded samples.</li>
-              <li><strong>Improved Visual Grounding</strong>: Our method significantly improves performance on various benchmarks by focusing optimization on visual tokens.</li>
-              <li><strong>Mitigated Language Bias</strong>: The VIG-guided approach successfully reduces linguistic bias.</li>
+            <!-- <ul>
+              <li><strong>Enhanced Data Efficiency</strong>: VIG-based strategy achieves superior performance using only a fraction of the data by pruning weakly grounded samples.</li>
+              <li><strong>Improved Visual Grounding</strong>: Our method improves performance on various benchmarks by focusing optimization on visual tokens.</li>
+              <li><strong>Mitigated Language Bias</strong>: VIG-guided approach successfully reduces linguistic bias.</li>
+            </ul> -->
+
+            <ul style="margin-top: 10px;">
+              <li>
+                <strong>Enhanced Data Efficiency</strong>: 
+                Achieve superior performance by pruning weakly grounded samples.
+              </li>
+              <li>
+                <strong>Improved Visual Grounding</strong>: 
+                Boost benchmark performance by focusing on visual tokens.
+              </li>
+              <li>
+                <strong>Mitigated Language Bias</strong>: 
+                Successfully reduce linguistic bias through VIG guided optimization.
+              </li>
             </ul>
             </div>
           </div>
@@ -202,7 +217,6 @@
     </section>
 
 
-  <hr>
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">Visual Information Gain</h2>
@@ -340,6 +354,8 @@
 
     </div>
   </section>
+
+  <hr>
 
   <section class="section">
     <div class="container is-max-desktop">
