@@ -180,6 +180,7 @@
     </section>
 
 
+  <hr>
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">Visual Information Gain</h2>
@@ -191,8 +192,8 @@
       <div class="content" style="text-align: left;">
         <ul>
           <li>We introduce VIG, which quantifies how much the inclusion of image $I$ reduces the model's uncertainty.</li>
-          <li>We define VIG as the log-ratio between the model's perplexities (PPL) on the same answer $A$ with and without visual conditioning.</li>
-          <li>Based on the relationship $PPL = \exp(\mathcal{L})$, where $\mathcal{L}$ is the cross-entropy loss, VIG inherently reflects the aggregate contribution of per-token loss reductions.</li>
+          <li>VIG is defined as the log-ratio between the model's perplexities on the same answer $A$ with and without visual conditioning.</li>
+          <li>Based on the relationship $PPL = \exp(\mathcal{L})$, where $\mathcal{L}$ is the cross-entropy loss, VIG inherently reflects the aggregate <em>contribution of per-token loss reductions.</em></li>
         </ul>
       </div>
       <h4 class="title is-4">Analyses</h4>
@@ -214,7 +215,7 @@
             </div>
             <div class="swiper-slide">
               <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-bottom: 1rem;">
-                <img src="static/images/benchmark-level.png" alt="Run 2" style="width: 70%; height: auto;">
+                <img src="static/images/benchmark-level.png" alt="Run 2" style="width: 60%; height: auto;">
               </div>
               <div class="content" style="text-align: left;">
                 <p><strong>Benchmark-level</strong>: VIG aligns with benchmark-level modality dependency.</p>
