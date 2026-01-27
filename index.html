@@ -304,11 +304,11 @@
           VIG-guided selective training is the practical training strategy that trains the model by focusing only on the <em>"part that need to be seen"</em> of the <em>"data that needs to be seen"</em>
         </p>
         <br>
-        <p>
-          1. All training samples are ranked by VIG and the top <i>p%</i> are selected.
-          2. Within this curated subset, token-level selection is further performed using same threshold <i>\tau_p</i>
-          3. The model is optimized using only the selected tokens.
-        </p>
+        <ol>
+          <li>1. All training samples are ranked by VIG and the top $p%$ are selected.</li>
+          <li>2. Within this curated subset, token-level selection is further performed using same threshold $\tau_p$</li>
+          <li>3. The model is optimized using only the selected tokens.</li>
+        </ol>
       </div>
       <!-- result -->
       <h4 class="title is-4">Experimental Results</h4>
