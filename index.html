@@ -178,15 +178,15 @@
 
             <strong>Research Question</strong>
             <ul>
-              <li><em>Can we directly <strong>measure</strong> how much each training sample and token <strong>benefits from the visual input?</strong></em></li>
+              <li><em>Can we directly <strong>measure the visual benefits for each sample and token?</strong></em></li>
               <li><em>Can we use this signal to <strong>focus</strong> learning on genuinely visual evidance?</em></li>
             </ul>
 
             <strong>Method</strong>
             <ul>
-              <li><strong>Visual Information Gain (VIG)</strong>: We introduce a perplexity-based metric that quantifies the contribution of visual input.</li>
+              <li><strong>Visual Information Gain (VIG)</strong>: A perplexity-based metric quantifying visual input contribution.</li>
               <!-- <li><strong>VIG as a Grounding Indicator</strong>: We analyse that VIG reliably serves as an indicator of visual grounding across sample, benchmark, token level. -->
-              <li><strong>VIG-Guided Selective Training</strong>: We propose a strategy that prioritizes high VIG-samples and tokens.</li>
+              <li><strong>VIG-Guided Selective Training</strong>: A strategy prioritizing samples and tokens with high VIG.</li>
             </ul>
 
             <strong>Results</strong>
@@ -314,7 +314,7 @@
       <h2 class="title is-3">VIG-Guided Selective Training</h2>
       <div class="content">
         <p>
-          VIG-guided selective training is the practical training strategy that trains the model by focusing only on the <em>"part that need to be seen"</em> of the <em>"data that needs to be seen"</em>
+          VIG-guided selective training prioritizes visually informative data and tokens for efficient model optimization.
         </p>
         <ol>
           <li>All training samples are ranked by VIG and the top $p%$ are selected.</li>
