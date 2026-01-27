@@ -299,32 +299,16 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">VIG-guided Selective Training</h2>
       <h4 class="title is-4">Framework</h4>
-      <div style="width:100%; margin: 0 auto 1rem auto; text-align: center;">
-        <figure class="image is-inline-block">
-          <img src="static/images/reguide.png" alt="ReGuide Diagram">
-        </figure>
-      </div>
       <div class="content">
         <p>
-          Reflexive Guidance (ReGuide) is a simple and model-agnostic two-stage prompting strategy to enhance the OoD detectability of LVLMs. We leverage the LVLM itself to obtain guidance for OoDD from its powerful zero-shot visual recognition capabilities.
+          VIG-guided selective training is the practical training strategy that trains the model by focusing only on the <em>"part that need to be seen"</em> of the <em>"data that needs to be seen"</em>
         </p>
         <br>
         <p>
-          <strong>Stage 1:</strong> The LVLM suggests <i>2N</i> class names based on the input image.
+          1. All training samples are ranked by VIG and the top <i>p%</i> are selected.
+          2. Within this curated subset, token-level selection is further performed using same threshold <i>\tau_p</i>
+          3. The model is optimized using only the selected tokens.
         </p>
-        <ul>
-          <li>The first <i>N</i> classes are visually similar (near-OoD).</li>
-          <li>The second <i>N</i> classes are visually dissimilar or from different domains (far-OoD).</li>
-          <li>For OoD images, suggested classes often closely match the ground-truth label.</li>
-        </ul>
-        <br>
-        <p>
-          <strong>Stage 2:</strong> The suggested classes are used as auxiliary OoD classes.
-        </p>
-        <ul>
-          <li>OoD inputs may receive higher confidence for these classes than for ID classes.</li>
-          <li>The rejection class remains as a fallback option.</li>
-        </ul>
       </div>
       <!-- result -->
       <h4 class="title is-4">Experimental Results</h4>
@@ -351,7 +335,7 @@
     </div>
   </section>
 
-  
+<!--   
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">BibTeX</h2>
@@ -366,7 +350,7 @@
         }
       </div>
     </div>
-  </section>
+  </section> -->
 
   <footer class="footer">
     <div class="container">
